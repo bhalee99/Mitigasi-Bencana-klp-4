@@ -7,8 +7,16 @@ from sklearn.naive_bayes import ComplementNB
 from sklearn.linear_model import LogisticRegression # Model Kedua
 from sklearn.metrics import classification_report, accuracy_score
 from imblearn.over_sampling import SMOTE # Teknik Over-sampling
-#iqbal
+
+#HFUGFIUFUOIICNDICDI RENDI
+# REEEE
+# dani punya
+#uifurfrffr
+
 # =========================================================
+# reneifubeuif
+# reniiiiiiii
+
 # ⚠️ GANTI DENGAN NAMA 3 FILE CSV ANDA! ⚠️
 FILE_NAMES = [
     'banjir_data_realtime.csv',   
@@ -16,7 +24,7 @@ FILE_NAMES = [
     'gempa_data_realtime.csv'     
 ]
 # =========================================================
-
+# rendii 21.42
 # --- DAFTAR STOPWORDS BAHASA INDONESIA ---
 INDO_STOPWORDS = [
     'yang', 'untuk', 'pada', 'saya', 'dan', 'adalah', 'di', 'ke', 'dari', 
