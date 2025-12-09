@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report, accuracy_score
 from imblearn.over_sampling import SMOTE # Teknik Over-sampling
 
 #HFUGFIUFUOIICNDICDI RENDI
-# REEEE
+# REE
 # dani punya
 #uifurfrffr
 
