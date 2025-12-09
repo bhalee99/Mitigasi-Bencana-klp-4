@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report, accuracy_score
 from imblearn.over_sampling import SMOTE # Teknik Over-sampling
 #HFUGFIUFUOIICNDICDI RENDI
 # REEEE
-# dani punya
+# dani punya ini project
 # =========================================================
 # ⚠️ GANTI DENGAN NAMA 3 FILE CSV ANDA! ⚠️
 FILE_NAMES = [
