@@ -1,79 +1,82 @@
 import pandas as pd
-from textblob import TextBlob
 import matplotlib.pyplot as plt
-import os
+from textblob import TextBlob
 
-# ======================================================
-# Fungsi untuk menentukan sentimen (positif/negatif/netral)
-# ======================================================
-def get_sentiment(text):
+# ==========================
+# Fungsi Analisis Sentimen
+# ==========================
+def analyze_sentiment(text):
     analysis = TextBlob(str(text))
-    if analysis.sentiment.polarity > 0:
+    polarity = analysis.sentiment.polarity
+
+    if polarity > 0:
         return "Positif"
-    elif analysis.sentiment.polarity < 0:
+    elif polarity < 0:
         return "Negatif"
     else:
         return "Netral"
 
-# ======================================================
-# Daftar file CSV (ganti nama file sesuai punya kamu)
-# ======================================================
-file_paths = {
+
+# ==========================
+# Daftar File
+# ==========================
+files = {
     "Banjir": "banjir_data_realtime.csv",
     "Gempa Bumi": "gempa_data_realtime.csv",
-    "Tanah Longsor": "longsor.csv"
+    "Tanah Longsor": "longsor_data_realtime.csv"
 }
 
-# Menyimpan hasil semua kategori
-summary_sentimen = {}
+summary = {}  # untuk visualisasi dan laporan
+all_results = []  # untuk disimpan ke CSV
 
-# ======================================================
-# Proses tiap dataset bencana
-# ======================================================
-for category, filepath in file_paths.items():
-
-    if not os.path.exists(filepath):
-        print(f"File tidak ditemukan: {filepath}")
-        continue
-
-    print(f"\n=== Memproses: {category} ===")
-
-    df = pd.read_csv(filepath)
-
-    # Pastikan kolom tweet bernama 'tweet'
-    if "tweet" not in df.columns:
-        print(f"Kolom 'tweet' tidak ditemukan dalam file {filepath}")
-        continue
+# ==========================
+# Pemrosesan Setiap File
+# ==========================
+for kategori, file_path in files.items():
+    print(f"\n=== Memproses: {kategori} ===")
     
-    # Hitung sentimen
-    df["sentimen"] = df["tweet"].apply(get_sentiment)
+    try:
+        df = pd.read_csv(file_path)
+    except:
+        print(f"File {file_path} tidak ditemukan!")
+        continue
 
-    # Hitung distribusi sentimen
-    counts = df["sentimen"].value_counts()
-    summary_sentimen[category] = counts
+    if "Text" not in df.columns:
+        print(f"Kolom 'Text' tidak ada dalam file {file_path}")
+        continue
 
-# ======================================================
-# VISUALISASI 1 — Pie Chart per Bencana
-# ======================================================
-for category, counts in summary_sentimen.items():
+    # Analisis sentimen
+    df["Sentimen"] = df["Text"].apply(analyze_sentiment)
 
-    plt.figure(figsize=(6, 6))
-    plt.title(f"Distribusi Sentimen untuk {category}")
-    plt.pie(counts, labels=counts.index, autopct="%1.1f%%")
+    # Simpan hasil
+    df["Kategori"] = kategori
+    all_results.append(df)
+
+    # Ringkasan untuk visualisasi
+    summary[kategori] = df["Sentimen"].value_counts()
+
+
+# ==========================
+# Gabungkan Semua Hasil
+# ==========================
+if all_results:
+    final_df = pd.concat(all_results)
+    final_df.to_csv("hasil_sentimen.csv", index=False)
+    print("\nHasil analisis disimpan ke hasil_sentimen.csv")
+
+
+# ==========================
+# Visualisasi
+# ==========================
+summary_df = pd.DataFrame(summary).fillna(0)
+
+if not summary_df.empty:
+    summary_df.plot(kind="bar", figsize=(10, 6))
+    plt.title("Distribusi Sentimen per Kategori Bencana")
+    plt.xlabel("Jenis Sentimen")
+    plt.ylabel("Jumlah Tweet")
+    plt.legend(title="Kategori")
+    plt.tight_layout()
     plt.show()
-
-# ======================================================
-# VISUALISASI 2 — Bar Chart Perbandingan Antar Bencana
-# ======================================================
-
-# Membuat DataFrame gabungan
-summary_df = pd.DataFrame(summary_sentimen).fillna(0)
-
-plt.figure(figsize=(10, 6))
-summary_df.T.plot(kind="bar")
-plt.title("Perbandingan Sentimen Antar Bencana")
-plt.xlabel("Jenis Bencana")
-plt.ylabel("Jumlah Tweet")
-plt.legend(title="Kategori Sentimen")
-plt.xticks(rotation=0)
-plt.show()
+else:
+    print("Tidak ada data yang bisa divisualisasikan.")
