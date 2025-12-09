@@ -13,7 +13,8 @@ from imblearn.over_sampling import SMOTE # Teknik Over-sampling
 # dani punya
 #uifurfrffr
 =======
-#iqbal
+# =========================================================
+
 >>>>>>> 0cf5d227db62344958cb451abe263ab5b7617a2b
 # =========================================================
 # reneifubeuif
@@ -25,7 +26,7 @@ FILE_NAMES = [
     'gempa_data_realtime.csv'     
 ]
 # =========================================================
-
+# rendii 21.42
 # --- DAFTAR STOPWORDS BAHASA INDONESIA ---
 INDO_STOPWORDS = [
     'yang', 'untuk', 'pada', 'saya', 'dan', 'adalah', 'di', 'ke', 'dari', 
