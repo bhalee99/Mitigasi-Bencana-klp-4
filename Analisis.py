@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-import sys
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import ComplementNB 
@@ -114,6 +111,7 @@ else:
 
 
 print("==================================================")
+
 
 
 
