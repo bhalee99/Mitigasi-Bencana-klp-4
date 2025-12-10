@@ -1,9 +1,9 @@
-📊 Analisis Sentimen Bencana Alam Indonesia (X/Twitter Data)
+ANALISIS SENTIMEN BENCANA ALAM INDONESIA DENGAN DATA TWEET/X
 Proyek ini bertujuan untuk mengembangkan model klasifikasi sentimen yang mampu memproses dan menganalisis reaksi publik di platform X (Twitter) terhadap tiga jenis bencana alam yang sering terjadi di Indonesia: Banjir, Tanah Longsor, dan Gempa Bumi.
 
 Data diambil secara real-time menggunakan X API V2.
 
-⚙️ Struktur Proyek
+*Struktur Proyek
 Repositori ini berisi kode inti untuk pengambilan data (data scraping) dan pemodelan Machine Learning:
 
 get_data_scripts/: Berisi script Python untuk pengambilan data (API).
@@ -24,7 +24,7 @@ gempa_data_realtime.csv
 
 sentiment_analysis.py: Skrip utama untuk melatih model, menggabungkan ketiga dataset, menerapkan SMOTE, dan mengevaluasi kinerja model.
 
-🎯 Metodologi Analisis
+*Metodologi Analisis
 Kami menggunakan pendekatan Machine Learning untuk mengatasi tantangan ketidakseimbangan kelas (banyak tweet Netral, sedikit tweet Positif).
 
 1. Penggabungan Data (Data Concatenation)
@@ -44,7 +44,7 @@ Complement Naive Bayes (CNB)
 
 Logistic Regression (LR)
 
-🚀 Cara Menggunakan Proyek Ini
+*Cara Menggunakan Proyek Ini
 Prasyarat
 Python: Versi 3.10 ke atas (direkomendasikan menggunakan Virtual Environment (myenv)).
 
@@ -66,7 +66,6 @@ Bash
 (myenv) python sentiment_analysis.py
 Hasil: Script akan menampilkan laporan klasifikasi perbandingan model CNB dan LR, menunjukkan model mana yang memiliki kinerja terbaik setelah penyeimbangan SMOTE.
 
-📧 Kontak
-Jika Anda memiliki pertanyaan atau ingin berkolaborasi, silakan hubungi saya atau buka Issue di repositori ini.
+*Kontak
+Jika Anda memiliki pertanyaan atau ingin berkolaborasi, silakan hubungi atau buka Issue di repositori ini.
 
-Muhammad [Nama Anda]
