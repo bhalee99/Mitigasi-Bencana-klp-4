@@ -1,4 +1,5 @@
 ANALISIS SENTIMEN BENCANA ALAM INDONESIA DENGAN DATA TWEET/X
+
 Proyek ini bertujuan untuk mengembangkan model klasifikasi sentimen yang mampu memproses dan menganalisis reaksi publik di platform X (Twitter) terhadap tiga jenis bencana alam yang sering terjadi di Indonesia: Banjir, Tanah Longsor, dan Gempa Bumi.
 
 Data diambil secara real-time menggunakan X API V2.
